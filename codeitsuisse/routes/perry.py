@@ -21,15 +21,13 @@ def fraction(p, q):
 def processQuestions(questions, maxRating):
     from_ = []
     to_ = []
+    output_list = []
     for q in questions:
         for i in q:
-            from_.append(int(i["from"]))
-            to_.append(int(i["to"]))
+            output_list.extend([x for x in range(i['from'], i['to'] + 1)])
 
-    min_ = max(1, min(from_))
-    max_ = min(max(to_), maxRating)
+    count = len(set(output_list))
 
-    count = max_ - min_ + 1
     return count
 
 
