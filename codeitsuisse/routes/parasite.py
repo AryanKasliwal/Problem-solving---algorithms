@@ -287,7 +287,7 @@ def evaluate_parasite():
         output_p1 = {}
         index = 0
         for key in data_point['interestedIndividuals']:
-            output_p1[key] = list(ans.values)[index]
+            output_p1[key] = list(ans.values())[index]
             index += 1
         output_dict['p1'] = output_p1
         ans1 = 0
