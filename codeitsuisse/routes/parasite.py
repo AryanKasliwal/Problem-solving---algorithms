@@ -19,8 +19,6 @@ class Room:
                 if arrangement[i][j] == 3:
                     self.infected_row = i
                     self.infected_column = j
-                    logging.info(f"Infected row {self.infected_row}")
-                    logging.info(f"Infected row {self.infected_column}")
         while len(self.interested_people) != 0:
             self.interested_people.pop(0)
         for person in interested_individuals:
@@ -309,5 +307,5 @@ def evaluate_parasite():
         output_dict['p4'] = ans3
 
         output_list.append(output_dict)
-    logging.info("data sent for evaluation {}".format(output_list))
+        logging.info("data sent for evaluation {}".format(output_list))
     return json.dumps(output_list)
