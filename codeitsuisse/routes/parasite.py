@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 @app.route('/parasite', methods=['POST'])
 def evaluate_parasite():
     data = request.get_json()
-    logging.info("data sent for evaluation {}".format(data))
+    logging.info("data sent for evaluation {}".format(data[1].get("room")))
     inputValue = data[1].get("room")
     logging.info("My result :{}".format(inputValue))
     return json.dumps(inputValue)
