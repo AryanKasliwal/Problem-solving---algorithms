@@ -124,7 +124,7 @@ class Room:
                             if i < len(visited) and j < len(visited[i]):
                                 visited[i][j] = 1
                         else:
-                            if i <= len(visited) and j <= len(visited[i]):
+                            if i < len(visited) and j < len(visited[i]):
                                 visited[i][j] = 0
                 queue = [(self.infected_row, self.infected_column)]
                 visited[self.infected_row][self.infected_column] = 1
