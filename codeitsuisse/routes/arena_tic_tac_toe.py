@@ -15,4 +15,5 @@ def evaluateArena():
     battle_id = battle_id_data.get("battleId")
     logging.info("Battle Id :{}".format(battle_id))
     messages = SSEClient(f'https://cis2021-hk-individual.herokuapp.com/tic-tac-toe/play/{battle_id}')
+    logging.info(messages)
     return json.dumps(messages)
