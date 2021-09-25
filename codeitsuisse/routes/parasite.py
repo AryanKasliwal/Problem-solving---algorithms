@@ -14,11 +14,14 @@ class Room:
         self.positioning = arrangement
         self.interested_individuals = interested_individuals
         self.traversal_distances = [[0 for x in range(len(self.positioning[0]))] for y in range(len(self.positioning))]
+        self.visited = [[0 for x in range(len(self.positioning[0]))] for y in range(len(self.positioning))]
         for i in range(len(arrangement)):
             for j in range(len(arrangement[i])):
                 if arrangement[i][j] == 3:
                     self.infected_row = i
                     self.infected_column = j
+                elif self.positioning[i][j] == 0 or self.positioning[i][j] == 2:
+                    self.visited[i][j] = 1
 
         while len(self.interested_people) != 0:
             self.interested_people.pop(0)
@@ -39,15 +42,9 @@ class Room:
             if self.positioning[int(person[0])][int(person[1])] == 2 or self.positioning[person[0]][person[1]] == 0:
                 output[array[index]] = -1
             else:
-                visited = [[0 for x in range(len(self.positioning[0]))] for y in range(len(self.positioning))]
-                for i in range(len(visited)):
-                    for j in range(len(visited[i])):
-                        if self.positioning[i][j] == 0 or self.positioning[i][j] == 2:
-                            visited[i][j] = 1
-                        else:
-                            visited[i][j] = 0
+                visited_cells = self.visited
                 queue = [(self.infected_row, self.infected_column)]
-                visited[self.infected_row][self.infected_column] = 1
+                visited_cells[self.infected_row][self.infected_column] = 1
                 while len(queue) != 0:
                     p = queue[0]
                     queue.pop(0)
@@ -55,57 +52,57 @@ class Room:
                         output[array[index]] = self.traversal_distances[p[0]][p[1]]
                         flag = True
 
-                    if p[0] - 1 >= 0 and visited[p[0] - 1][p[1]] == 0:
+                    if p[0] - 1 >= 0 and visited_cells[p[0] - 1][p[1]] == 0:
                         if self.positioning[p[0] - 1][p[1]] == 1 or self.positioning[p[0] - 1][p[1]] == 3:
                             self.traversal_distances[p[0] - 1][p[1]] += 1  # self.traversal_distances[p[0]][p[1]] + 1
                             queue.append((p[0] - 1, p[1]))
-                            visited[p[0] - 1][p[1]] = 1
+                            visited_cells[p[0] - 1][p[1]] = 1
 
-                    if p[0] + 1 < len(self.positioning) and visited[p[0] + 1][p[1]] == 0:
+                    if p[0] + 1 < len(self.positioning) and visited_cells[p[0] + 1][p[1]] == 0:
                         if self.positioning[p[0] + 1][p[1]] == 1 or self.positioning[p[0] + 1][p[1]] == 3:
                             self.traversal_distances[p[0] + 1][p[1]] += 1  # self.traversal_distances[p[0]][p[1]] + 1
                             queue.append((p[0] + 1, p[1]))
-                            visited[p[0] + 1][p[1]] = 1
+                            visited_cells[p[0] + 1][p[1]] = 1
 
-                    if p[1] - 1 >= 0 and visited[p[0]][p[1] - 1] == 0:
+                    if p[1] - 1 >= 0 and visited_cells[p[0]][p[1] - 1] == 0:
                         if self.positioning[p[0]][p[1] - 1] == 1 or self.positioning[p[0]][p[1] - 1] == 3:
                             self.traversal_distances[p[0]][p[1] - 1] += 1  # self.traversal_distances[p[0]][p[1]] + 1
                             queue.append((p[0], p[1] - 1))
-                            visited[p[0]][p[1] - 1] = 1
+                            visited_cells[p[0]][p[1] - 1] = 1
 
-                    if p[1] + 1 < len(self.positioning[0]) and visited[p[0]][p[1] + 1] == 0:
+                    if p[1] + 1 < len(self.positioning[0]) and visited_cells[p[0]][p[1] + 1] == 0:
                         if self.positioning[p[0]][p[1] + 1] == 1 or self.positioning[p[0]][p[1] + 1] == 3:
                             self.traversal_distances[p[0]][p[1] + 1] += 1  # self.traversal_distances[p[0]][p[1]] + 1
                             queue.append((p[0], p[1] + 1))
-                            visited[p[0]][p[1] + 1] = 1
+                            visited_cells[p[0]][p[1] + 1] = 1
 
-                    if p[0] - 1 >= 0 and p[1] - 1 >= 0 and visited[p[0] - 1][p[1] - 1] == 0:
+                    if p[0] - 1 >= 0 and p[1] - 1 >= 0 and visited_cells[p[0] - 1][p[1] - 1] == 0:
                         if self.positioning[p[0] - 1][p[1] - 1] == 1 or self.positioning[p[0] - 1][p[1] - 1] == 3:
                             self.traversal_distances[p[0] - 1][
                                 p[1] - 1] += 1  # self.traversal_distances[p[0]][p[1]] + 1
                             queue.append((p[0] - 1, p[1] - 1))
-                            visited[p[0] - 1][p[1] - 1] = 1
+                            visited_cells[p[0] - 1][p[1] - 1] = 1
 
-                    if p[0] - 1 >= 0 and p[1] + 1 < len(self.positioning[0]) and visited[p[0] - 1][p[1] + 1] == 0:
+                    if p[0] - 1 >= 0 and p[1] + 1 < len(self.positioning[0]) and visited_cells[p[0] - 1][p[1] + 1] == 0:
                         if self.positioning[p[0] - 1][p[1] + 1] == 1 or self.positioning[p[0] - 1][p[1] + 1] == 3:
                             self.traversal_distances[p[0] - 1][
                                 p[1] + 1] += 1  # self.traversal_distances[p[0]][p[1]] + 1
                             queue.append((p[0] - 1, p[1] + 1))
-                            visited[p[0] - 1][p[1] + 1] = 1
+                            visited_cells[p[0] - 1][p[1] + 1] = 1
 
-                    if p[0] + 1 < len(self.positioning) and p[1] - 1 >= 0 and visited[p[0] + 1][p[1] - 1] == 0:
+                    if p[0] + 1 < len(self.positioning) and p[1] - 1 >= 0 and visited_cells[p[0] + 1][p[1] - 1] == 0:
                         if self.positioning[p[0] + 1][p[1] - 1] == 1 or self.positioning[p[0] + 1][p[1] - 1] == 3:
                             self.traversal_distances[p[0]][p[1] - 1] += 1  # self.traversal_distances[p[0]][p[1]] + 1
                             queue.append((p[0] + 1, p[1] - 1))
-                            visited[p[0] + 1][p[1] - 1] = 1
+                            visited_cells[p[0] + 1][p[1] - 1] = 1
 
-                    if p[0] + 1 < len(self.positioning) and p[1] + 1 < len(self.positioning[0]) and visited[p[0] + 1][
+                    if p[0] + 1 < len(self.positioning) and p[1] + 1 < len(self.positioning[0]) and visited_cells[p[0] + 1][
                         p[1] + 1] == 0:
                         if self.positioning[p[0] + 1][p[1] + 1] == 1 or self.positioning[p[0] + 1][p[1] + 1] == 3:
                             self.traversal_distances[p[0] + 1][
                                 p[1] + 1] += 1  # self.traversal_distances[p[0]][p[1]] + 1
                             queue.append((p[0] + 1, p[1] + 1))
-                            visited[p[0] + 1][p[1] + 1] = 1
+                            visited_cells[p[0] + 1][p[1] + 1] = 1
                 if not flag:
                     output[array[index]] = -1
         return output
@@ -118,15 +115,9 @@ class Room:
             if self.positioning[int(person[0])][int(person[1])] == 2 or self.positioning[person[0]][person[1]] == 0:
                 output[array[index]] = -1
             else:
-                visited = [[0 for x in range(len(self.positioning[0]))] for y in range(len(self.positioning))]
-                for i in range(len(self.positioning)):
-                    for j in range(len(self.positioning[i])):
-                        if self.positioning[i][j] == 0 or self.positioning[i][j] == 2:
-                            visited[i][j] = 1
-                        else:
-                            visited[i][j] = 0
+                visited_cells = self.visited
+                visited_cells[self.infected_row][self.infected_column] = 1
                 queue = [(self.infected_row, self.infected_column)]
-                visited[self.infected_row][self.infected_column] = 1
                 while len(queue) != 0:
                     p = queue[0]
                     queue.pop(0)
@@ -134,29 +125,29 @@ class Room:
                         output[array[index]] = self.traversal_distances[p[0]][p[1]]
                         flag = True
 
-                    if p[0] - 1 >= 0 and visited[p[0] - 1][p[1]] == 0:
+                    if p[0] - 1 >= 0 and visited_cells[p[0] - 1][p[1]] == 0:
                         if self.positioning[p[0] - 1][p[1]] == 1 or self.positioning[p[0] - 1][p[1]] == 3:
                             self.traversal_distances[p[0] - 1][p[1]] += 1  # self.traversal_distances[p[0]][p[1]] + 1
                             queue.append((p[0] - 1, p[1]))
-                            visited[p[0] - 1][p[1]] = 1
+                            visited_cells[p[0] - 1][p[1]] = 1
 
-                    if p[0] + 1 < len(self.positioning) and visited[p[0] + 1][p[1]] == 0:
+                    if p[0] + 1 < len(self.positioning) and visited_cells[p[0] + 1][p[1]] == 0:
                         if self.positioning[p[0] + 1][p[1]] == 1 or self.positioning[p[0] + 1][p[1]] == 3:
                             self.traversal_distances[p[0] + 1][p[1]] += 1  # self.traversal_distances[p[0]][p[1]] + 1
                             queue.append((p[0] + 1, p[1]))
-                            visited[p[0] + 1][p[1]] = 1
+                            visited_cells[p[0] + 1][p[1]] = 1
 
-                    if p[1] - 1 >= 0 and visited[p[0]][p[1] - 1] == 0:
+                    if p[1] - 1 >= 0 and visited_cells[p[0]][p[1] - 1] == 0:
                         if self.positioning[p[0]][p[1] - 1] == 1 or self.positioning[p[0]][p[1] - 1] == 3:
                             self.traversal_distances[p[0]][p[1] - 1] += 1  # self.traversal_distances[p[0]][p[1]] + 1
                             queue.append((p[0], p[1] - 1))
-                            visited[p[0]][p[1] - 1] = 1
+                            visited_cells[p[0]][p[1] - 1] = 1
 
-                    if (p[1] + 1) < len(self.positioning[0]) and visited[p[0]][p[1] + 1] == 0:
+                    if (p[1] + 1) < len(self.positioning[0]) and visited_cells[p[0]][p[1] + 1] == 0:
                         if self.positioning[p[0]][p[1] + 1] == 1 or self.positioning[p[0]][p[1] + 1] == 3:
                             self.traversal_distances[p[0]][p[1] + 1] += 1  # self.traversal_distances[p[0]][p[1]] + 1
                             queue.append((p[0], p[1] + 1))
-                            visited[p[0]][p[1] + 1] = 1
+                            visited_cells[p[0]][p[1] + 1] = 1
                 if not flag:
                     output[array[index]] = -1
         return output
