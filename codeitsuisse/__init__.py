@@ -5,3 +5,4 @@ import codeitsuisse.routes.arena_tic_tac_toe
 import codeitsuisse.routes.parasite
 import codeitsuisse.routes.stock_hunter
 import codeitsuisse.routes.asteroid
+import  codeitsuisse.routes.perry
