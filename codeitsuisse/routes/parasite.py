@@ -278,7 +278,7 @@ def evaluate_parasite():
         for key in data_point['interestedIndividuals']:
             output_p1[key] = list(ans.values())[index]
             index += 1
-        output_dict['p1'] = output_p1
+        output_dict["p1"] = output_p1
         ans1 = 0
         answer = room.p2()
         for value in answer.values():
@@ -288,13 +288,13 @@ def evaluate_parasite():
             if value > ans1:
                 ans1 = value
 
-        output_dict['p2'] = ans1
+        output_dict["p2"] = ans1
 
         ans2 = room.p3()
-        output_dict['p3'] = ans2
+        output_dict["p3"] = ans2
 
         ans3 = room.p4(answer, ans1)
-        output_dict['p4'] = ans3
+        output_dict["p4"] = ans3
 
         output_list.append(output_dict)
         logging.info(f"data sent for checking {output_list}")
