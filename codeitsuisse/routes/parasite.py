@@ -121,9 +121,11 @@ class Room:
                 for i in range(len(self.positioning)):
                     for j in range(len(self.positioning[i])):
                         if self.positioning[i][j] == 0 or self.positioning[i][j] == 2:
-                            visited[i][j] = 1
+                            if i <= len(visited) and j <= len(visited[i]):
+                                visited[i][j] = 1
                         else:
-                            visited[i][j] = 0
+                            if i <= len(visited) and j <= len(visited[i]):
+                                visited[i][j] = 0
                 queue = [(self.infected_row, self.infected_column)]
                 visited[self.infected_row][self.infected_column] = 1
                 while len(queue) != 0:
