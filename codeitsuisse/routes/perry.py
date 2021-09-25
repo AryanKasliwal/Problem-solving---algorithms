@@ -20,7 +20,7 @@ def fraction(p, q):
 
 
 def nPr(n, r):
-    return math.factorial(n)/math.factorial(n - r)
+    return int(math.factorial(n)/math.factorial(n - r))
 
 
 def processQuestions(questions, maxRating):
