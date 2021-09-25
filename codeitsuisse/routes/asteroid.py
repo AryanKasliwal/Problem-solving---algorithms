@@ -50,9 +50,9 @@ def evaluate_asteroid():
 
                 if test[lowest_origin + 1] in astroids.keys():
                     num = astroids[test[lowest_origin + 1]]
-                    if num <= 7:
+                    if num < 7:
                         current_score += num
-                    elif 8 <= num < 11:
+                    elif 8 < num < 11:
                         current_score += (num * 1.5)
                     else:
                         current_score += (num * 2)
