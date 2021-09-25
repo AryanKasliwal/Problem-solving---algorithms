@@ -40,7 +40,7 @@ class Room:
             if self.positioning[int(person[0])][int(person[1])] == 2 or self.positioning[person[0]][person[1]] == 0:
                 output[array[index]] = -1
             else:
-                visited = [[0 for x in range(len(self.positioning))] for y in range(len(self.positioning[0]))]
+                visited = [[0 for x in range(len(self.positioning[0]))] for y in range(len(self.positioning))]
                 for i in range(len(visited)):
                     for j in range(len(visited[i])):
                         if self.positioning[i][j] == 0 or self.positioning[i][j] == 2:
@@ -119,7 +119,7 @@ class Room:
             if self.positioning[int(person[0])][int(person[1])] == 2 or self.positioning[person[0]][person[1]] == 0:
                 output[array[index]] = -1
             else:
-                visited = [[0 for x in range(len(self.positioning))] for y in range(len(self.positioning[0]))]
+                visited = [[0 for x in range(len(self.positioning[0]))] for y in range(len(self.positioning))]
                 for i in range(len(self.positioning)):
                     for j in range(len(self.positioning[i])):
                         if self.positioning[i][j] == 0 or self.positioning[i][j] == 2:
@@ -172,7 +172,7 @@ class Room:
             if self.positioning[int(person[0])][int(person[1])] == 2 or self.positioning[person[0]][person[1]] == 0:
                 output[array[index]] = -1
             else:
-                visited = [[0 for x in range(len(self.positioning))] for y in range(len(self.positioning[0]))]
+                visited = [[0 for x in range(len(self.positioning[0]))] for y in range(len(self.positioning))]
                 queue = [(self.infected_row, self.infected_column)]
                 visited[self.infected_row][self.infected_column] = 1
                 while len(queue) != 0:
