@@ -19,6 +19,8 @@ class Room:
                 if arrangement[i][j] == 3:
                     self.infected_row = i
                     self.infected_column = j
+                    logging.info(f"Infected row {self.infected_row}")
+                    logging.info(f"Infected row {self.infected_column}")
         while len(self.interested_people) != 0:
             self.interested_people.pop(0)
         for person in interested_individuals:
