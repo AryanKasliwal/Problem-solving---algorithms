@@ -20,15 +20,14 @@ def fraction(p, q):
 
 def processQuestions(questions, maxRating):
     output_list = []
-    #for q in questions:
-     #   for i in q:
-     #       output_list.extend([x for x in range(i['from'], i['to'] + 1)])
+    for q in questions:
+        for i in q:
+            output_list.extend([x for x in range(i['from'], i['to'] + 1) if x >= maxRating])
 
-    #output_list = filter(lambda number: number <= maxRating, output_list)
-    #output_list = filter(lambda number: number >= 1, output_list)
-    #count = len(set(output_list))
 
-    return 2*len(questions)
+    count = len(set(output_list))
+
+    return count
 
 
 def processInterview(input):
