@@ -19,7 +19,6 @@ class Room:
                 if arrangement[i][j] == 3:
                     self.infected_row = i
                     self.infected_column = j
-                elif self.positioning[i][j] == 0 or self.positioning[i][j] == 2:
 
         while len(self.interested_people) != 0:
             self.interested_people.pop(0)
