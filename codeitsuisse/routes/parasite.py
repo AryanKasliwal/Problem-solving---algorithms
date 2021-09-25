@@ -13,7 +13,7 @@ class Room:
         self.id = id
         self.positioning = arrangement
         self.interested_individuals = interested_individuals
-        self.traversal_distances = [[0 for x in range(len(self.positioning))] for y in range(len(self.positioning[0]))]
+        self.traversal_distances = [[0 for x in range(len(self.positioning[0]))] for y in range(len(self.positioning))]
         for i in range(len(arrangement)):
             for j in range(len(arrangement[i])):
                 if arrangement[i][j] == 3:
