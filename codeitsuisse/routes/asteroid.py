@@ -17,6 +17,7 @@ def evaluate_asteroid():
     for test in input_value:
         highest_score, highest_origin = int(), int()
         for i in range(len(test)):
+            astroids = dict()
             if i == len(test) or i == 0:
                 current_score = 1
             else:
