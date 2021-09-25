@@ -9,8 +9,6 @@ logger = logging.getLogger(__name__)
 
 @app.route('/square', methods=['POST'])
 def evaluate_stock_hunter():
-    data = request.get_json()
-    logging.info("data sent for evaluation {}".format(data))
 
     def derive_map(entry_point, vertical_stepper, horizontal_spacer, target_point, gridDepth, gridKey):
 
@@ -80,6 +78,8 @@ def evaluate_stock_hunter():
                     cache[i][j] = cache[i - 1][j] + arr[i][j]
         return cache[row - 1][col - 1]
 
+    data = request.get_json()
+    logging.info("data sent for evaluation {}".format(data))
     output_list = []
     for test_case in data:
         output_dict = {}
@@ -89,8 +89,7 @@ def evaluate_stock_hunter():
         gridkey = test_case["gridKey"]
         horizontal_spacer = test_case["horizontalStepper"]
         vertical_stepper = test_case["verticalStepper"]
-        risk_cost, risk_map = derive_map(entry_point, vertical_stepper, horizontal_spacer, target_point, gridDepth,
-                                         gridkey)
+        risk_cost, risk_map = derive_map(entry_point, vertical_stepper, horizontal_spacer, target_point, gridDepth, gridkey)
         risk_cost = [list(x) for x in zip(*risk_cost)]
         risk_map = [list(x) for x in zip(*risk_map)]
 
