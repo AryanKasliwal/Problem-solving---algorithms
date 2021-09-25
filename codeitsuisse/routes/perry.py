@@ -1,11 +1,22 @@
 import logging
 import json
+from math import gcd
 
 from flask import request, jsonify
 
 from codeitsuisse import app
 
 logger = logging.getLogger(__name__)
+
+
+def fraction(p, q):
+    d = gcd(p, q)
+
+    p = p // d
+    q = q // d
+
+    return p, q
+
 
 def processQuestions(questions, maxRating):
     from_ = []
@@ -19,6 +30,8 @@ def processQuestions(questions, maxRating):
     max_ = min(to_)
 
     count = max_ - min_ + 1
+    logging.info(f"Min:{min_}, Max: {max_}")
+    logging.info("Count: ", count)
     return count
 
 
@@ -28,6 +41,7 @@ def processInterview(input):
 
     return processQuestions(questions, maxRating)
 
+
 @app.route('/stig/perry', methods=['POST'])
 def evaluate_perry():
     input = request.get_json()
@@ -35,9 +49,11 @@ def evaluate_perry():
     result = []
     for i in range(len(input)):
         p = processInterview(input[i])
+        q = input[i]["maxRating"]
+        p, q = fraction(p, q)
         obj = {
             "p": p,
-            "q": input[i]["maxRating"]
+            "q": q
         }
         result.append(obj)
     logging.info("My result :{}".format(result))
