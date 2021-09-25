@@ -1,5 +1,6 @@
 import logging
 import json
+import math
 from math import gcd
 
 from flask import request, jsonify
@@ -18,16 +19,25 @@ def fraction(p, q):
     return p, q
 
 
+def fact(n):
+    if (n <= 1):
+        return 1
+    return n * fact(n - 1)
+
+
+def nPr(n, r):
+    return math.floor(fact(n) / fact(n - r))
+
 def processQuestions(questions, maxRating):
-    output_list = []
-    for q in questions:
-        for i in q:
-            output_list.extend([x for x in range(i['from'], i['to'] + 1) if x >= maxRating])
+    # output_list = []
+    # for q in questions:
+    #     for i in q:
+    #         output_list.extend([x for x in range(i['from'], i['to'] + 1) if x >= maxRating])
+    #
 
+    #count = len(set(output_list))
 
-    count = len(set(output_list))
-
-    return count
+    return nPr(len(questions), 2)
 
 
 def processInterview(input):
