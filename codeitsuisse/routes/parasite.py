@@ -155,7 +155,7 @@ class Room:
                             queue.append((p[0], p[1] - 1))
                             visited[p[0]][p[1] - 1] = 1
 
-                    if p[1] + 1 < len(self.positioning[0]) and visited[p[0]][p[1] + 1] == 0:
+                    if (p[1] + 1) < len(self.positioning[0]) and visited[p[0]][p[1] + 1] == 0:
                         if self.positioning[p[0]][p[1] + 1] == 1 or self.positioning[p[0]][p[1] + 1] == 3:
                             self.traversal_distances[p[0]][p[1] + 1] += 1  # self.traversal_distances[p[0]][p[1]] + 1
                             queue.append((p[0], p[1] + 1))
