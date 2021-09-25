@@ -121,7 +121,7 @@ class Room:
                 for i in range(len(self.positioning)):
                     for j in range(len(self.positioning[i])):
                         if self.positioning[i][j] == 0 or self.positioning[i][j] == 2:
-                            if i <= len(visited) and j <= len(visited[i]):
+                            if i < len(visited) and j < len(visited[i]):
                                 visited[i][j] = 1
                         else:
                             if i <= len(visited) and j <= len(visited[i]):
