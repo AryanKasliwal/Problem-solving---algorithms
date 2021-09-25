@@ -284,7 +284,7 @@ def evaluate_parasite():
         ans = room.p1()
         output_p1 = {}
         index = 0
-        for key, val in data_point['interestedIndividuals'].items():
+        for key in data_point['interestedIndividuals']:
             output_p1[key] = list(ans.values)[index]
             index += 1
         output_dict['p1'] = output_p1
