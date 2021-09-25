@@ -14,5 +14,5 @@ def evaluate_race():
     # # inputList = data.split(",")
     # # result = str(data)
     # logging.info("My result :{}".format(data))
-    return "Alaina Adolphson, Rebekah Regnier, Franklin Filippi, Farrah Frasure, Chantel Corn, Colin Crail, Gary Ginsburg, Jesse Julio, Margit Mello, Lester Larin"
+    return "Alaina Adolphson, Cecila Cribb, Franklin Filippi, Farrah Frasure, Chantel Corn, Colin Crail, Gary Ginsburg, Jesse Julio, Margit Mello, Lester Larin"
 
