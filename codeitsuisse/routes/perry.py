@@ -23,11 +23,11 @@ def processQuestions(questions, maxRating):
     to_ = []
     for q in questions:
         for i in q:
-            from_.append(i["from"])
-            to_.append(i["to"])
+            from_.append(int(i["from"]))
+            to_.append(int(i["to"]))
 
-    min_ = max(1, max(from_))
-    max_ = min(min(to_), maxRating)
+    min_ = max(1, min(from_))
+    max_ = min(max(to_), maxRating)
 
     count = max_ - min_ + 1
     return count
