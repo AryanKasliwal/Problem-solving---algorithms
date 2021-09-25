@@ -41,7 +41,6 @@ def processInterview(input):
 @app.route('/stig/perry', methods=['POST'])
 def evaluate_perry():
     input = request.get_json()
-    logging.info("data sent for evaluation {}".format(input))
     result = []
     for i in range(len(input)):
         p = processInterview(input[i])
