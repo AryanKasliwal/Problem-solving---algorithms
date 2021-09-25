@@ -268,7 +268,7 @@ class Room:
             return answer
 
 
-@app.route('/parasite', methods=['POST'])
+@app.route('/parasite', methods=['GET'])
 def evaluate_parasite():
     data = request.get_json()
     logging.info("data sent for evaluation {}".format(data))
