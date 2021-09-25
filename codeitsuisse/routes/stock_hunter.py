@@ -7,7 +7,7 @@ from codeitsuisse import app
 
 logger = logging.getLogger(__name__)
 
-@app.route('/square', methods=['POST'])
+@app.route('/stock-hunter', methods=['POST'])
 def evaluate_stock_hunter():
 
     def derive_map(entry_point, vertical_stepper, horizontal_spacer, target_point, gridDepth, gridKey):
