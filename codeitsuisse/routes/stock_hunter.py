@@ -12,10 +12,10 @@ def evaluate_stock_hunter():
 
     def derive_map(entry_point, vertical_stepper, horizontal_spacer, target_point, gridDepth, gridKey):
 
-        entry_x = entry_point['EntryX']
-        entry_y = entry_point['EntryY']
-        target_x = target_point['TargetX']
-        target_y = target_point['TargetY']
+        entry_x = entry_point['first']
+        entry_y = entry_point['second']
+        target_x = target_point['first']
+        target_y = target_point['second']
         rows = max(entry_x, target_x) + 1
         cols = max(entry_y, target_y) + 1
 
