@@ -17,7 +17,6 @@ logger.addHandler(handler)
 logger.setLevel(logging.INFO)
 
 
-
 if __name__ == "__main__":
     logging.info("Starting application ...")
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
