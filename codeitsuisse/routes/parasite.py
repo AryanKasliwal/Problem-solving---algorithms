@@ -118,8 +118,8 @@ class Room:
                 output[array[index]] = -1
             else:
                 visited = [[0 for x in range(len(self.positioning))] for y in range(len(self.positioning[0]))]
-                for i in range(len(visited)):
-                    for j in range(len(visited[i])):
+                for i in range(len(self.positioning)):
+                    for j in range(len(self.positioning[i])):
                         if self.positioning[i][j] == 0 or self.positioning[i][j] == 2:
                             visited[i][j] = 1
                         else:
