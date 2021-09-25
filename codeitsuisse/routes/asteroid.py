@@ -42,7 +42,7 @@ def evaluate_asteroid():
                             value *= 2
                         current_score += value
                         value = 0
-                    if lower_origin >= 0 and highest_origin < len(test) and test[higher_origin] != test[lower_origin]:
+                    if lower_origin >= 0 and higher_origin < len(test) and test[higher_origin] != test[lower_origin]:
                         break
             if current_score > highest_score:
                 highest_origin = i
