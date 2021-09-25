@@ -30,8 +30,6 @@ def processQuestions(questions, maxRating):
     max_ = min(to_)
 
     count = max_ - min_ + 1
-    logging.info(f"Min:{min_}, Max: {max_}")
-    logging.info("Count: ", count)
     return count
 
 
