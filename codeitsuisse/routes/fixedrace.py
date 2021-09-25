@@ -14,5 +14,5 @@ def evaluate_race():
     # # inputList = data.split(",")
     # # result = str(data)
     # logging.info("My result :{}".format(data))
-    return "Cecila Cribb, Isreal Isenhour, Sharyl Shepler, Lauretta Lippard, Rossana Rackers, Francisco Finchum, Jannet Jacquemin, Alaina Adolphson, Brady Broda, Dorathy Detweiler"
+    return "Cecila Cribb, Isreal Isenhour, Sharyl Shepler, Lauretta Lippard, Rossana Rackers, Francisco Finchum, Jannet Jacquemin, Alaina Adolphson, Brady Broda, Orval Olsson"
 
