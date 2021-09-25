@@ -297,5 +297,5 @@ def evaluate_parasite():
         output_dict['p4'] = ans3
 
         output_list.append(output_dict)
-        logging.info(f"data sent for evaluation {output_list}")
+        logging.info(f"data sent for checking {output_list}")
     return json.dumps(output_list)
