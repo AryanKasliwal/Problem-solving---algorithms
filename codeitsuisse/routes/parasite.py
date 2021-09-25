@@ -34,7 +34,7 @@ class Room:
 
     def diagonal_time_taken(self, array):
         output = dict()
-        self.traversal_distances = [[0 for x in range(len(self.positioning))] for y in range(len(self.positioning[0]))]
+        self.traversal_distances = [[0 for x in range(len(self.positioning[0]))] for y in range(len(self.positioning))]
         for index, person in enumerate(array):
             flag = False
             if self.positioning[int(person[0])][int(person[1])] == 2 or self.positioning[person[0]][person[1]] == 0:
@@ -113,7 +113,7 @@ class Room:
 
     def horizontal_time_taken(self, array):
         output = dict()
-        self.traversal_distances = [[0 for x in range(len(self.positioning) + 10)] for y in range(len(self.positioning[0]) + 10)]
+        self.traversal_distances = [[0 for x in range(len(self.positioning[0]))] for y in range(len(self.positioning))]
         for index, person in enumerate(array):
             flag = False
             if self.positioning[int(person[0])][int(person[1])] == 2 or self.positioning[person[0]][person[1]] == 0:
@@ -166,7 +166,7 @@ class Room:
 
     def horizontal_time_taken_forX(self, array):
         output = dict()
-        self.traversal_distances = [[0 for x in range(len(self.positioning))] for y in range(len(self.positioning[0]))]
+        self.traversal_distances = [[0 for x in range(len(self.positioning[0]))] for y in range(len(self.positioning))]
         for index, person in enumerate(array):
             flag = False
             if self.positioning[int(person[0])][int(person[1])] == 2 or self.positioning[person[0]][person[1]] == 0:
