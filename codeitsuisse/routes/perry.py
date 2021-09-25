@@ -29,7 +29,7 @@ def processInterview(input):
     return processQuestions(questions, maxRating)
 
 @app.route('/stig/perry', methods=['POST'])
-def evaluate():
+def evaluate_perry():
     input = request.get_json()
     logging.info("data sent for evaluation {}".format(input))
     result = []
