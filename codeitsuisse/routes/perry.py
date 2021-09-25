@@ -16,7 +16,7 @@ def processQuestions(questions, maxRating):
             to_.append(i["to"])
 
     min_ = max(from_)
-    max_ = min(min(to_), maxRating)
+    max_ = min(to_)
 
     count = max_ - min_ + 1
     return count
@@ -34,10 +34,10 @@ def evaluate_perry():
     logging.info("data sent for evaluation {}".format(input))
     result = []
     for i in range(len(input)):
-        q = processInterview(input[i])
+        p = processInterview(input[i])
         obj = {
-            "p": 1,
-            "q": q
+            "p": p,
+            "q": input[i]["maxRating"]
         }
         result.append(obj)
     logging.info("My result :{}".format(result))
