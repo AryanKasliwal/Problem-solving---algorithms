@@ -28,7 +28,7 @@ def processQuestions(questions, maxRating):
     output_list = filter(lambda number: number >= 1, output_list)
     count = len(set(output_list))
 
-    return count
+    return 2*len(questions)
 
 
 def processInterview(input):
