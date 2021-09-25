@@ -7,6 +7,7 @@ from codeitsuisse import app
 
 logger = logging.getLogger(__name__)
 
+
 @app.route('/asteroid', methods=['POST'])
 def evaluate_asteroid():
     data = request.get_json()
@@ -17,7 +18,6 @@ def evaluate_asteroid():
     for test in input_value:
         highest_score, highest_origin = int(), int()
         for i in range(len(test)):
-            astroids = dict()
             if i == len(test) or i == 0:
                 current_score = 1
             else:
@@ -35,16 +35,15 @@ def evaluate_asteroid():
                         lower_origin -= 1
                     if looping == True:
                         higher_origin += 1
-                    if test[lower_origin + 1] in astroids.keys():
-                        if value < 10 and value >= 7:
-                            value *= 1.5
-                        elif value >= 10:
-                            value *= 2
-                        current_score += value
-                        value = 0
+                    if value < 10 and value >= 7:
+                        value *= 1.5
+                    elif value >= 10:
+                        value *= 2
+                    current_score += value
+                    value = 0
                     if lower_origin >= 0 and higher_origin < len(test) and test[higher_origin] != test[lower_origin]:
                         break
-            if current_score > highest_score:
+            if current_score >= highest_score:
                 highest_origin = i
                 highest_score = current_score
         cur_result = {"input": test, "score": highest_score, "origin": highest_origin}
