@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 def evaluate_decoder():
     data = request.get_json()
     logging.info("data sent for evaluation {}".format(data))
-    result = {"answer" : ['a', 'j', 'i', 'b', 'm']}
+    result = {"answer" : ['a', 'j', 'i', 'm', 'b']}
     logging.info("My result :{}".format(result))
     return json.dumps(result)
 
